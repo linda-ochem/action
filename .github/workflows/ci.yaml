@@ -23,14 +23,14 @@ jobs:
       - name: Build and Push Docker Image
         run: |
           # Build the Frontend Docker image
-          docker build -t $DOCKER_REPO-frontend $FRONTEND_DIR
+          docker build -t cleowoman/frontend .
 
           # Build the Backend Docker image
-          docker build -t $DOCKER_REPO-backend $BACKEND_DIR
+          docker build -t cleowoman/backend .
 
           # Log in to Docker Hub using your credentials
           echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
           # Push the Docker images to Docker Hub
-          docker push $DOCKER_REPO-frontend
-          docker push $DOCKER_REPO-backend
+          docker push cleowoman/frontend
+          docker push cleowoman/backend
