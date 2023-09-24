@@ -5,12 +5,12 @@ FROM node:14 as frontend-builder
 WORKDIR /app/frontend
 
 # Copy the frontend application files to the container
-COPY frontend/package*.json ./
-COPY frontend/yarn.lock ./
+COPY frontend ./
+# COPY frontend/yarn.lock ./
 RUN yarn install
 
 # Copy the frontend source code into the container
-COPY frontend/ ./
+# COPY frontend/ ./
 
 # Build the frontend application
 RUN yarn build
@@ -22,12 +22,12 @@ FROM node:14 as backend-builder
 WORKDIR /app/backend
 
 # Copy the backend application files to the container
-COPY backend/package*.json ./
-COPY backend/yarn.lock ./
-RUN yarn install
+COPY backend ./
+# COPY backend/yarn.lock ./
+RUN npm install
 
 # Copy the backend source code into the container
-COPY backend/ ./
+# COPY backend/ ./
 
 # Stage 3: Create the Production Image
 FROM node:14
