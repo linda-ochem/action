@@ -1,1 +1,1 @@
-This application records your workout sessions.
+This application records your workout sessions
