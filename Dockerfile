@@ -13,7 +13,7 @@ RUN yarn install
 # Copy the frontend source code into the container
 COPY frontend/ ./
 
-# Build the frontend application
+# Build the frontend
 RUN yarn build
 
 # Stage 2: Build the Backend
