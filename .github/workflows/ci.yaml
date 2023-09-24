@@ -29,7 +29,7 @@ jobs:
           docker build -t cleowoman/backend .
 
           # Log in to Docker Hub using your credentials
-          echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+          echo "$DOCKER_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
 
           # Push the Docker images to Docker Hub
           docker push cleowoman/frontend
