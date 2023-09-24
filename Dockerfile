@@ -1,35 +1,33 @@
 # Stage 1: Build the Frontend
 FROM node:14 as frontend-builder
 
-RUN mkdir /app/frontend
 # Set the working directory for the frontend
 WORKDIR /app/frontend
 
 # Copy the frontend application files to the container
-COPY /frontend /app/frontend/
-# COPY frontend/yarn.lock ./
+COPY frontend/package*.json ./
+COPY frontend/yarn.lock ./
 RUN yarn install
 
 # Copy the frontend source code into the container
-# COPY frontend/ ./
+COPY frontend/ ./
 
-# Build the frontend
+# Build the frontend application
 RUN yarn build
 
 # Stage 2: Build the Backend
 FROM node:14 as backend-builder
 
-RUN mkdir /app/backend
-
 # Set the working directory for the backend
 WORKDIR /app/backend
 
 # Copy the backend application files to the container
-COPY /backend /app/backend/
-RUN npm install
+COPY backend/package*.json ./
+COPY backend/yarn.lock ./
+RUN yarn install
 
 # Copy the backend source code into the container
-# COPY backend/ ./
+COPY backend/ ./
 
 # Stage 3: Create the Production Image
 FROM node:14
@@ -44,8 +42,8 @@ COPY --from=frontend-builder /app/frontend/build ./frontend
 COPY --from=backend-builder /app/backend ./
 
 # Expose the ports used by your backend and frontend (adjust as needed)
-EXPOSE 3000
+EXPOSE 3000 
 EXPOSE 4000 
 
 # Define the entry point for the backend
-CMD ["node", "server.js"] # Use "src/index.js" for the frontend
+CMD ["node", "server.js"]
