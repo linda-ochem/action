@@ -11,8 +11,8 @@ resources:
 variables:
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: '09d435e3-7ebb-4c5c-90b6-a648ef29d1dd'
-  imageRepository: 'lindaochemaction'
-  containerRegistry: 'cicd05.azurecr.io'
+  imageRepository: 'action'
+  containerRegistry: 'lindaRegistry.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
   tag: '$(Build.BuildId)'
 
