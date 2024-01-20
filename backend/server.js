@@ -10,6 +10,9 @@ app.use((req,res,next)=>{
     console.log(req.path, req.method)
     next()
 })
+app.get('/', (req,res)=>{
+    res.send('welcome to my app')
+})
 //connect DB
 mongoose.connect(process.env.MONGO_URI).then(()=>{
     app.listen(process.env.PORT, ()=>{
