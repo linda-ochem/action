@@ -40,7 +40,7 @@ WORKDIR /app
 COPY --from=frontend-builder /app/frontend/build ./frontend
 
 # Copy the built backend files from the backend-builder stage
-COPY --from=backend-builder /app/backend/build ./backend
+COPY --from=backend-builder /app/backend ./backend
 
 # Expose the ports used by your backend and frontend (adjust as needed)
 EXPOSE 3000 
