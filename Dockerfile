@@ -4,8 +4,9 @@ FROM node:14 as frontend-builder
 # Set the working directory for the frontend
 WORKDIR /app/frontend
 
+
 # Copy the frontend application files to the container
-COPY frontend ./
+COPY frontend ./app/
 # COPY frontend/yarn.lock ./
 RUN yarn install
 
@@ -22,8 +23,9 @@ FROM node:14 as backend-builder
 WORKDIR /app/backend
 
 # Copy the backend application files to the container
-COPY backend ./
+COPY backend ./app/
 
+COPY package.json package-lock.json ./
 # COPY backend/yarn.lock ./
 RUN npm install
 
@@ -40,7 +42,7 @@ WORKDIR /app
 COPY --from=frontend-builder /app/frontend/build ./frontend
 
 # Copy the built backend files from the backend-builder stage
-COPY --from=backend-builder /app/backend ./backend
+COPY --from=backend-builder /app/backend ./
 
 # Expose the ports used by your backend and frontend (adjust as needed)
 EXPOSE 3000 
