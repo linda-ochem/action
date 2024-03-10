@@ -3,13 +3,9 @@ FROM node:alpine AS frontend-builder
 WORKDIR /app/frontend
 COPY frontend/package.json frontend/package-lock.json ./app/
 # COPY frontend/yarn.lock ./
-RUN yarn install
+RUN npm install
 
-# Copy the frontend source code into the container
 COPY frontend ./app/
-
-# Build the frontend 
-RUN yarn build
 
 # RUN npm install
 # COPY frontend ./
