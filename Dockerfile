@@ -1,12 +1,12 @@
 # Stage 1: Build the frontend (React) application
 FROM node:alpine AS frontend-builder
-WORKDIR /app
-COPY frontend/package.json frontend/package-lock.json ./
+WORKDIR /app/frontend
+COPY frontend/package.json frontend/package-lock.json ./app/
 # COPY frontend/yarn.lock ./
 RUN yarn install
 
 # Copy the frontend source code into the container
-COPY frontend/ ./
+COPY frontend ./app/
 
 # Build the frontend 
 RUN yarn build
@@ -17,11 +17,11 @@ RUN yarn build
 
 # Stage 2: Build the backend (Node.js) application
 FROM node:alpine AS backend-builder
-WORKDIR /app
-COPY backend/package.json backend/package-lock.json ./
+WORKDIR /app/backend
+COPY backend/package.json backend/package-lock.json ./app/
 RUN npm install -g nodemon
 RUN npm install
-COPY backend ./
+COPY backend ./app/
 
 # Stage 3: Create the final image
 FROM node:alpine
