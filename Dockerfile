@@ -28,7 +28,7 @@ WORKDIR /app
 
 # Copy the built frontend and backend applications from previous stages
 COPY --from=frontend-builder /app/build ./frontend
-COPY --from=backend-builder /app/build ./backend
+COPY --from=backend-builder /app/ ./backend
 
 
 # Expose ports for frontend and backend
