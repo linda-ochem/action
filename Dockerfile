@@ -1,7 +1,7 @@
 # Stage 1: Build the frontend (React) application
 FROM node:alpine AS frontend-builder
 WORKDIR /app/frontend
-COPY frontend/package.json frontend/package-lock.json ./app/frontend/
+COPY frontend ./app/frontend/
 # COPY frontend/yarn.lock ./
 RUN npm install
 
