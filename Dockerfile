@@ -21,7 +21,6 @@ WORKDIR /app
 COPY backend/package.json backend/package-lock.json ./
 RUN npm install
 COPY backend ./
-RUN npm run build
 
 # Stage 3: Create the final image
 FROM node:alpine
