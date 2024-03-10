@@ -9,7 +9,7 @@ RUN npm install
 COPY frontend ./app/
 
 # Build the frontend 
-RUN npm run start
+RUN yarn build
 
 # RUN npm install
 # COPY frontend ./
