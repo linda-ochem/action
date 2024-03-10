@@ -2,9 +2,18 @@
 FROM node:alpine AS frontend-builder
 WORKDIR /app
 COPY frontend/package.json frontend/package-lock.json ./
-RUN npm install
-COPY frontend ./
-RUN npm run build
+# COPY frontend/yarn.lock ./
+RUN yarn install
+
+# Copy the frontend source code into the container
+COPY frontend/ ./
+
+# Build the frontend application
+RUN yarn build
+
+# RUN npm install
+# COPY frontend ./
+# RUN npm run build
 
 # Stage 2: Build the backend (Node.js) application
 FROM node:alpine AS backend-builder
