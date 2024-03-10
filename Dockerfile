@@ -25,7 +25,6 @@ WORKDIR /app/backend
 # Copy the backend application files to the container
 COPY backend ./app/
 
-COPY package.json package-lock.json ./
 # COPY backend/yarn.lock ./
 RUN npm install
 
