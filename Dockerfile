@@ -19,6 +19,7 @@ RUN yarn build
 FROM node:alpine AS backend-builder
 WORKDIR /app
 COPY backend/package.json backend/package-lock.json ./
+RUN npm install -g nodemon
 RUN npm install
 COPY backend ./
 
