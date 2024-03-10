@@ -28,14 +28,15 @@ WORKDIR /app
 
 # Copy the built frontend and backend applications from previous stages
 COPY --from=frontend-builder /app/build ./frontend
-COPY --from=backend-builder /app/ ./backend
+COPY --from=backend-builder /app/build ./backend
+
 
 # Expose ports for frontend and backend
 EXPOSE 3000
 EXPOSE 4000
 
 # Run the backend and frontend applications
-CMD ["node", "backend/server.js"]
+CMD ["npm", "run", "dev"]
 
 
 
