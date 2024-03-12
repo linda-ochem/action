@@ -5,7 +5,7 @@ FROM node:latest
 WORKDIR /app/backend
 
 # Copy package.json and package-lock.json to the working directory
-COPY package*.json ./app/
+COPY package*.json ./
 
 # RUN cd /app/backend
 
