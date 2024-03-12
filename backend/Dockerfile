@@ -1,11 +1,11 @@
 # Use an official Node.js runtime as the base image
-FROM node:latest
+FROM node:alpine
 
 # Set the working directory in the container
-WORKDIR /app/backend
+WORKDIR /usr/src/app
 
 # Copy package.json and package-lock.json to the working directory
-COPY package*.json ./
+COPY ./package*.json ./
 
 # RUN cd /app/backend
 
@@ -19,4 +19,4 @@ COPY . .
 EXPOSE 4000
 
 # Command to run the backend server
-CMD ["npm", "dev"]
+CMD ["npm", "run", "dev"]
