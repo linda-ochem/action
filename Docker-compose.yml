@@ -1,0 +1,23 @@
+version: '3'
+services:
+  frontend:
+    image: cleowoman/frontend
+    ports:
+      - "3000:3000" # Map container port 80 to host port 3000
+    depends_on:
+      - backend
+
+  backend:
+    image: cleowoman/backend
+
+    ports:
+      - "4000:4000" # Map container port 5000 to host port 5000
+    environment:
+      - MONGO_URI=mongodb+srv://Linda:Zitachi1@cluster0.dg2xqt2.mongodb.net/?retryWrites=true&w=majority # Replace with your MongoDB URI
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017" # Map container port 27017 to host port 27017
